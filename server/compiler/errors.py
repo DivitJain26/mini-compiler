@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 
-ErrorKind = Literal["Lexical", "Syntax"]
+ErrorKind = Literal["Lexical", "Syntax", "Semantic"]
 
 
 @dataclass
