@@ -75,6 +75,7 @@ function registerMiniLang(monaco: typeof Monaco) {
     },
   });
 
+  // Dark theme
   monaco.editor.defineTheme("minilang-dark", {
     base: "vs-dark",
     inherit: true,
@@ -98,24 +99,49 @@ function registerMiniLang(monaco: typeof Monaco) {
       "editor.inactiveSelectionBackground": "#1e293b",
     },
   });
+
+  // Light theme
+  monaco.editor.defineTheme("minilang-light", {
+    base: "vs",
+    inherit: true,
+    rules: [
+      { token: "keyword", foreground: "0ea5e9", fontStyle: "bold" },
+      { token: "identifier", foreground: "334155" },
+      { token: "number", foreground: "f97316" },
+      { token: "number.float", foreground: "f97316" },
+      { token: "operator", foreground: "64748b" },
+      { token: "delimiter", foreground: "94a3b8" },
+      { token: "comment", foreground: "94a3b8", fontStyle: "italic" },
+    ],
+    colors: {
+      "editor.background": "#ffffff",
+      "editor.foreground": "#334155",
+      "editor.lineHighlightBackground": "#f8fafc",
+      "editor.selectionBackground": "#e2e8f0",
+      "editorCursor.foreground": "#0ea5e9",
+      "editorLineNumber.foreground": "#cbd5e1",
+      "editorLineNumber.activeForeground": "#64748b",
+      "editor.inactiveSelectionBackground": "#f1f5f9",
+    },
+  });
 }
 
 interface EditorProps {
   value: string;
   onChange: (value: string) => void;
+  theme: "dark" | "light";
 }
 
-export default function Editor({ value, onChange }: EditorProps) {
+export default function Editor({ value, onChange, theme }: EditorProps) {
   const handleMount: OnMount = (_editor, monaco) => {
     registerMiniLang(monaco);
-    monaco.editor.setTheme("minilang-dark");
   };
 
   return (
     <MonacoEditor
       height="100%"
       language="minilang"
-      theme="minilang-dark"
+      theme={theme === "dark" ? "minilang-dark" : "minilang-light"}
       value={value}
       defaultValue={SAMPLE_CODE}
       beforeMount={(monaco) => registerMiniLang(monaco)}
