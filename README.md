@@ -1,5 +1,6 @@
-# mini-compiler
 # MiniLang Compiler
+
+#### Live Demo: https://mini-compiler-frontend.onrender.com/
 
 MiniLang Compiler is a full-stack toy compiler built using React and Flask that demonstrates the core phases of compiler design:
 
@@ -43,7 +44,7 @@ cd MiniLang-Compiler
 ## Navigate to backend
 
 ```bash
-cd backend
+cd server
 ```
 
 ## Create Virtual Environment
@@ -87,7 +88,7 @@ http://localhost:5000
 ## Navigate to frontend
 
 ```bash
-cd frontend
+cd client
 ```
 
 ## Install Dependencies
