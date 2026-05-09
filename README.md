@@ -34,7 +34,7 @@ The project provides a modern compiler playground interface for experimenting wi
 
 ```bash
 git clone <your-repo-url>
-cd MiniLang-Compiler
+cd miniCompiler
 ```
 
 ---
